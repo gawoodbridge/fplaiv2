@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Squad Builder &mdash; FPL Assistant</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <div id="nav-root"></div>
+
+  <main class="main">
+    <div class="page-header">
+      <div>
+        <h1>Squad builder</h1>
+        <p>Pick your 15, set your formation, and let the optimiser fill any gaps within budget.</p>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <input type="text" id="squad-name" class="field" style="margin:0;padding:10px 12px;background:var(--panel);border:1px solid var(--line);border-radius:10px;color:var(--chalk);" value="My Squad">
+        <button class="btn btn-primary" id="save-squad-btn">Save squad</button>
+      </div>
+    </div>
+
+    <div class="builder-layout">
+      <div>
+        <div class="card" style="margin-bottom:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+            <div>
+              <div class="sub">Budget</div>
+              <div style="font-family:var(--font-display);font-size:22px;" id="budget-label">&pound;0.0m / &pound;100.0m</div>
+            </div>
+            <div class="pill-select" id="formation-pills">
+              <div class="pill" data-formation="3-4-3">3-4-3</div>
+              <div class="pill" data-formation="3-5-2">3-5-2</div>
+              <div class="pill active" data-formation="4-4-2">4-4-2</div>
+              <div class="pill" data-formation="4-3-3">4-3-3</div>
+              <div class="pill" data-formation="5-3-2">5-3-2</div>
+              <div class="pill" data-formation="5-4-1">5-4-1</div>
+            </div>
+            <button class="btn" id="optimise-btn">&#10024; AI-optimise squad</button>
+          </div>
+          <div class="budget-bar"><div class="budget-bar-fill" id="budget-fill" style="width:0%;"></div></div>
+          <div id="rule-warnings" class="field-error"></div>
+        </div>
+
+        <div class="pitch" id="pitch">
+          <div class="pitch-row" id="row-fwd"></div>
+          <div class="pitch-row" id="row-mid"></div>
+          <div class="pitch-row" id="row-def"></div>
+          <div class="pitch-row" id="row-gkp"></div>
+          <div class="bench-row" id="bench-row"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <h3>Add a player</h3>
+          <p class="sub">Search and tap a player to add them to the next open slot.</p>
+          <input type="text" id="add-search" placeholder="Search player&hellip;" style="width:100%;margin-top:12px;background:var(--ink);border:1px solid var(--line);color:var(--chalk);padding:10px 12px;border-radius:10px;">
+          <div id="add-results" style="margin-top:10px;display:flex;flex-direction:column;gap:6px;max-height:340px;overflow-y:auto;"></div>
+        </div>
+
+        <div class="card" style="margin-top:16px;">
+          <h3>Squad rating</h3>
+          <div id="squad-rating" style="margin-top:10px;">
+            <div class="stat-card" style="padding:14px;">
+              <div class="label">Rating</div>
+              <div class="value" id="rating-value">&mdash;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/squad-builder.js"></script>
+</body>
+</html>

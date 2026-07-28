@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Player Search &mdash; FPL Assistant</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <div id="nav-root"></div>
+
+  <main class="main">
+    <div class="page-header">
+      <div>
+        <h1>Player search</h1>
+        <p>Filter and sort every Premier League player using live FPL data.</p>
+      </div>
+    </div>
+
+    <div class="filters-bar">
+      <input type="text" id="search-input" class="search-input" placeholder="Search player name&hellip;">
+      <select id="position-filter">
+        <option value="">All positions</option>
+        <option value="GKP">Goalkeepers</option>
+        <option value="DEF">Defenders</option>
+        <option value="MID">Midfielders</option>
+        <option value="FWD">Forwards</option>
+      </select>
+      <select id="team-filter"><option value="">All teams</option></select>
+      <select id="max-cost-filter">
+        <option value="">Any price</option>
+        <option value="5">Up to &pound;5.0m</option>
+        <option value="7">Up to &pound;7.0m</option>
+        <option value="9">Up to &pound;9.0m</option>
+        <option value="12">Up to &pound;12.0m</option>
+      </select>
+      <select id="sort-filter">
+        <option value="totalPoints">Total points</option>
+        <option value="form">Form</option>
+        <option value="nowCost">Price</option>
+        <option value="pointsPerGame">Points per game</option>
+        <option value="selectedByPercent">Ownership %</option>
+        <option value="ictIndex">ICT index</option>
+      </select>
+    </div>
+
+    <div id="compare-tray" class="card hidden" style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
+      <span id="compare-count" class="sub"></span>
+      <a href="compare.html" class="btn btn-primary btn-sm" id="compare-go">Compare selected &rarr;</a>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Player</th>
+            <th>Pos</th>
+            <th>Team</th>
+            <th>Price</th>
+            <th>Form</th>
+            <th>Points</th>
+            <th>PPG</th>
+            <th>Own %</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="players-body">
+          <tr><td colspan="10" style="text-align:center;padding:30px;"><div class="spinner" style="margin:0 auto;"></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/players.js"></script>
+</body>
+</html>
