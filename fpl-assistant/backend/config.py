@@ -25,3 +25,8 @@ class Config:
     FPL_CACHE_TTL = int(os.environ.get("FPL_CACHE_TTL", "300"))
 
     CORS_ORIGINS = os.environ.get("CORS_ORIGINS", "*")
+
+
+# Required to use the /api/admin/* endpoints. Leave unset to disable
+    # them entirely (they refuse all requests if this is empty).
+    ADMIN_KEY = os.environ.get("ADMIN_KEY", "")
