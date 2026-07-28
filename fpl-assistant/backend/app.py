@@ -19,6 +19,7 @@ def create_app():
     from routes.fixtures import fixtures_bp
     from routes.squads import squads_bp
     from routes.watchlist import watchlist_bp
+    from routes.admin import admin_bp
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(players_bp)
@@ -26,6 +27,7 @@ def create_app():
     app.register_blueprint(fixtures_bp)
     app.register_blueprint(squads_bp)
     app.register_blueprint(watchlist_bp)
+    app.register_blueprint(admin_bp)
 
     @app.get("/api/health")
     def health():
